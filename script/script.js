@@ -108,7 +108,8 @@ mainContainer.addEventListener('click', function (event) {
         // access element of card
         const companyName = parentNode.querySelector('.company-name').innerText;
         const style = parentNode.querySelector('.job-style').innerText;
-        const typeSalary = parentNode.querySelector('.job-type-salary').innerText;
+        const type = parentNode.querySelector('.job-type').innerText;
+        const salary = parentNode.querySelector('.job-salary').innerText;
         const description = parentNode.querySelector('.job-description').innerText;
 
         const Status = parentNode.querySelector('.job-status');
@@ -122,7 +123,8 @@ mainContainer.addEventListener('click', function (event) {
         const cardInfo = {
             companyName,
             style,
-            typeSalary,
+            type,
+            salary,
             Status: 'Interview',
             description
         }
@@ -158,7 +160,8 @@ mainContainer.addEventListener('click', function (event) {
         // access element of card
         const companyName = parentNode.querySelector('.company-name').innerText;
         const style = parentNode.querySelector('.job-style').innerText;
-        const typeSalary = parentNode.querySelector('.job-type-salary').innerText;
+        const type = parentNode.querySelector('.job-type').innerText;
+        const salary = parentNode.querySelector('.job-salary').innerText;
         const description = parentNode.querySelector('.job-description').innerText;
 
         const Status = parentNode.querySelector('.job-status');
@@ -172,7 +175,8 @@ mainContainer.addEventListener('click', function (event) {
         const cardInfo = {
             companyName,
             style,
-            typeSalary,
+            type,
+            salary,
             Status: 'Rejected',
             description
         }
@@ -221,7 +225,10 @@ function renderInterview() {
                         <div class=" space-y-2 ">
                             <h1 class="company-name text-xl font-bold text-info-content ">${interview.companyName}</h1>
                             <p class="job-style text-lg text-gray-500 mb-2">${interview.style}</p>
-                            <p class="job-type-salary text-gray-500 mb-3">${interview.typeSalary}</p>
+                            <div class="text-gray-500 mb-3">
+                                <span class="job-type">${interview.type}</span>
+                                <span class="job-salary">${interview.salary}</span>
+                            </div>
 
                             <h4 class="job-status text-lg px-2 py-1 w-30 text-success border border-success bg-green-100 rounded-md font-semibold">${interview.Status}</h4>
                             <p class="job-description text-gray-800">${interview.description}</p>
@@ -263,7 +270,10 @@ function renderRejected() {
                         <div class=" space-y-2 ">
                             <h1 class="company-name text-xl font-bold text-info-content ">${rejected.companyName}</h1>
                             <p class="job-style text-lg text-gray-500 mb-2">${rejected.style}</p>
-                            <p class="job-type-salary text-gray-500 mb-3">${rejected.typeSalary}</p>
+                            <div class="text-gray-500 mb-3">
+                                <span class="job-type">${rejected.type}</span>
+                                <span class="job-salary">${rejected.salary}</span>
+                            </div>
 
                             <h4 class="job-status text-lg px-2 py-1 w-30 text-error border border-error bg-red-100 rounded-md font-semibold">${rejected.Status}</h4>
                             <p class="job-description text-gray-800">${rejected.description}</p>
@@ -333,3 +343,14 @@ function rejectedEmpty(){
         filterJobs.appendChild(div)
     }    
 }  
+
+
+
+
+
+
+
+
+function deleteBtn(params) {
+    
+}
