@@ -67,7 +67,7 @@ function toggle(id) {
         filterJobs.classList.remove('hidden');
 
         renderInterview();
-        
+        interviewEmpty();
         const interviewListCount = interviewList.length;
         jobCount.innerHTML = `${interviewListCount} of ${totalCard} jobs`;
 
@@ -84,7 +84,7 @@ function toggle(id) {
         filterJobs.classList.remove('hidden');
 
         renderRejected();
-        
+        rejectedEmpty();
         const rejectedListCount = rejectedList.length;
         jobCount.innerHTML = `${rejectedListCount} of ${totalCard} jobs`;
     }
@@ -290,3 +290,46 @@ function renderRejected() {
 
 
   
+// set interview section no job available
+function interviewEmpty(){
+
+    if (interviewList.length == 0) {
+        
+        const div = document.createElement('div');
+        div.innerHTML = `
+        
+            <div class="py-15 rounded-md shadow-sm flex flex-col justify-center items-center ">
+
+                    <div class : " w-100 h-100 ">
+                        <img  src="./resources/jobs.png" alt="">
+                    </div>
+                    <h1 class="text-2xl font-bold text-info-content mt-10 mb-2">No jobs available</h1>
+                    <p class="text-lg text-gray-500 mb">Check back soon for new job opportunities</p>
+                </div>
+        
+        `
+        filterJobs.appendChild(div)
+    }
+}
+
+// set reject section no job available
+function rejectedEmpty(){
+
+    if (rejectedList.length == 0) {
+        
+        const div = document.createElement('div');
+        div.innerHTML = `
+        
+            <div class="py-15 rounded-md shadow-sm flex flex-col justify-center items-center ">
+
+                    <div class : " w-100 h-100 ">
+                        <img  src="./resources/jobs.png" alt="">
+                    </div>
+                    <h1 class="text-2xl font-bold text-info-content mt-10 mb-2">No jobs available</h1>
+                    <p class="text-lg text-gray-500 mb">Check back soon for new job opportunities</p>
+                </div>
+        
+        `        
+        filterJobs.appendChild(div)
+    }    
+}  
