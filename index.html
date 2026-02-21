@@ -11,14 +11,55 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
+    <!-- styles -->
+    <style>
+        * {
+            background-color: #F8FAFC;
+        }
+    </style>
+
 
 </head>
 
 <body>
 
-    
+    <!-- header section start -->
+    <header class="w-8/10 mx-auto mt-15">
 
 
+        <!-- tacker section -->
+        <section>
+            <h1 class="text-3xl font-bold text-info-content">Job Application Tracker</h1>
+
+            <!-- tracker cards -->
+            <div class="tracker-card-container mt-8 grid grid-cols-3 gap-5">
+
+                <!-- tracker card -->
+                <div class="card  bg-base-100 card-xs shadow-sm p-5">
+                    <p>Total</p>
+                    <p id="total-job-application" class=" text-2xl font-bold text-info-content">0</p>
+                </div>
+                <!-- tracker card -->
+                <div class="card  bg-base-100 card-xs shadow-sm p-5">
+                    <p>Interview</p>
+                    <p id="interview-job-application" class=" text-2xl font-bold text-success">0</p>
+                </div>
+                <!-- tracker card -->
+                <div class="card  bg-base-100 card-xs shadow-sm p-5">
+                    <p>Rejected</p>
+                    <p id="rejected-job-application" class=" text-2xl font-bold text-red-400">0</p>
+                </div>
+            </div>
+
+
+        </section>
+
+        
+    </header>
+
+
+    <!-- js connect -->
+    <script src="./script/script.js"></script>
 </body>
 
 </html>
