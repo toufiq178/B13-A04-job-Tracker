@@ -22,39 +22,52 @@ let jobCount = document.getElementById('job-count');
 const jobAllCard = document.getElementById('job-card-container');
 
 
-// const AllCard = jobAllCard.children;
-// for(let card of AllCard){
-//     allList.push(card)
-// }
-// console.log(allList);
-
 
 // filter job section
 const filterJobs = document.getElementById('filter-jobs');
 // main container
 const mainContainer = document.querySelector('main');
 
-// total card length
 
 
 
 function calculateCount() {
+    // total card length
+
     const totalCard = jobAllCard.children.length;
 
     // total and jobs count
     totalCount.innerText = totalCard;
-    jobCount.innerHTML = `${totalCard} jobs`;
-
+    
     // interview count
     interviewCount.innerText = interviewList.length;
-
+    
     // rejected count
     rejectedCount.innerText = rejectedList.length;
-
-
+    
 }
 calculateCount()
 
+
+// allJobCountSet
+function allJobCountSet() {
+    jobCount.innerHTML = `${jobAllCard.children.length} jobs`;
+}
+allJobCountSet()
+// interviewJobCountSet
+function interviewJobCountSet() {
+    const interviewListCount = interviewList.length;
+    jobCount.innerHTML = `${interviewListCount} of ${jobAllCard.children.length} jobs`;
+}
+// rejectJobCountSet
+function rejectedJobCountSet() {
+    const rejectedListCount = rejectedList.length;
+    jobCount.innerHTML = `${rejectedListCount} of ${jobAllCard.children.length} jobs`;
+}
+
+
+
+// toggle start
 function toggle(id) {
 
     // add class 
@@ -80,15 +93,16 @@ function toggle(id) {
 
         renderInterview();
         interviewEmpty();
-        const interviewListCount = interviewList.length;
-        jobCount.innerHTML = `${interviewListCount} of ${jobAllCard.children.length} jobs`;
+
+        interviewJobCountSet();
 
 
     } else if (id == 'btn-filter-all') {
         jobAllCard.classList.remove('hidden');
         filterJobs.classList.add('hidden');
 
-        jobCount.innerHTML = `${jobAllCard.children.length} jobs`;
+        // jobCount.innerHTML = `${jobAllCard.children.length} jobs`;
+        allJobCountSet();
 
 
 
@@ -98,11 +112,11 @@ function toggle(id) {
 
         renderRejected();
         rejectedEmpty();
-        const rejectedListCount = rejectedList.length;
-        jobCount.innerHTML = `${rejectedListCount} of ${jobAllCard.children.length} jobs`;
+
+        rejectedJobCountSet();
+
     }
 }
-
 
 
 
@@ -117,28 +131,30 @@ mainContainer.addEventListener('click', function (event) {
         console.log(companyName);
 
 
-        // create object
-        const cardInfo = {
-            companyName,
-        }
-
-        interviewList = interviewList.filter(item => item.companyName !== cardInfo.companyName);
-        rejectedList = rejectedList.filter(item => item.companyName !== cardInfo.companyName);
+        interviewList = interviewList.filter(item => item.companyName !== companyName);
+        rejectedList = rejectedList.filter(item => item.companyName !== companyName);
         job.remove();
 
 
         if (currentStatus == 'btn-filter-interview') {
             renderInterview();
-
+            interviewEmpty()
+            interviewJobCountSet();
         }
 
         if (currentStatus == 'btn-filter-rejected') {
             renderRejected();
-
+            rejectedJobCountSet()
+            rejectedEmpty()
         }
 
+        if (currentStatus == 'btn-filter-all' ) {
+            
+            allJobCountSet()
+        }
         calculateCount();
-        return ;
+
+        return;
     }
 
 
@@ -191,12 +207,15 @@ mainContainer.addEventListener('click', function (event) {
         rejectedList = rejectedList.filter(item => item.companyName != cardInfo.companyName);
 
         if (currentStatus == 'btn-filter-rejected') {
-            renderRejected()
+            renderRejected();
+            rejectedEmpty();
+            rejectedJobCountSet()
         }
 
 
 
         calculateCount()
+
 
 
     } else if (event.target.classList.contains('btn-rejected')) {
@@ -246,8 +265,12 @@ mainContainer.addEventListener('click', function (event) {
 
 
         if (currentStatus == 'btn-filter-interview') {
-            renderInterview()
+            renderInterview();
+            interviewEmpty();
+            interviewJobCountSet();
+
         }
+
 
         calculateCount()
 
@@ -304,7 +327,10 @@ function renderInterview() {
         `
 
         filterJobs.appendChild(div)
+
     }
+
+
 }
 
 
