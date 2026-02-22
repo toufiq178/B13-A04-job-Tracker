@@ -123,7 +123,6 @@ mainContainer.addEventListener('click', function (event) {
         }
 
         interviewList = interviewList.filter(item => item.companyName !== cardInfo.companyName);
-
         rejectedList = rejectedList.filter(item => item.companyName !== cardInfo.companyName);
         job.remove();
 
@@ -297,8 +296,8 @@ function renderInterview() {
 
 
                         <!-- right -->
-                        <button id="btn-delete"
-                            class="  w-7 h-7  rounded-full border border-gray-200 text-gray-500  hover:bg-red-400 hover:text-white ">
+                        <button 
+                            class="btn-delete  w-7 h-7 cursor-pointer rounded-full border border-gray-200 text-gray-500  hover:bg-red-400 hover:text-white ">
                             <i class="fa-regular fa-trash-can"></i>
                         </button>
 
@@ -342,8 +341,8 @@ function renderRejected() {
 
 
                         <!-- right -->
-                        <button id="btn-delete"
-                            class="  w-7 h-7  rounded-full border border-gray-200 text-gray-500  hover:bg-red-400 hover:text-white ">
+                        <button 
+                            class="btn-delete  w-7 h-7 cursor-pointer rounded-full border border-gray-200 text-gray-500  hover:bg-red-400 hover:text-white ">
                             <i class="fa-regular fa-trash-can"></i>
                         </button>
 
