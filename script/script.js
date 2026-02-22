@@ -30,7 +30,7 @@ const mainContainer = document.querySelector('main');
 
 
 
-
+//  tracker count calculation
 function calculateCount() {
     // total card length
 
@@ -38,13 +38,13 @@ function calculateCount() {
 
     // total and jobs count
     totalCount.innerText = totalCard;
-    
+
     // interview count
     interviewCount.innerText = interviewList.length;
-    
+
     // rejected count
     rejectedCount.innerText = rejectedList.length;
-    
+
 }
 calculateCount()
 
@@ -54,6 +54,8 @@ function allJobCountSet() {
     jobCount.innerHTML = `${jobAllCard.children.length} jobs`;
 }
 allJobCountSet()
+
+
 // interviewJobCountSet
 function interviewJobCountSet() {
     const interviewListCount = interviewList.length;
@@ -120,10 +122,12 @@ function toggle(id) {
 
 
 
-// 
+// btn click function  interview / rejected / delete
 mainContainer.addEventListener('click', function (event) {
 
     // console.log(event.target.closest('.btn-delete'));
+
+    // if click delete btn
     if (event.target.closest('.btn-delete')) {
 
         const job = event.target.closest('.job-card');
@@ -148,8 +152,8 @@ mainContainer.addEventListener('click', function (event) {
             rejectedEmpty()
         }
 
-        if (currentStatus == 'btn-filter-all' ) {
-            
+        if (currentStatus == 'btn-filter-all') {
+
             allJobCountSet()
         }
         calculateCount();
@@ -157,7 +161,7 @@ mainContainer.addEventListener('click', function (event) {
         return;
     }
 
-
+    // if click interview btn
     if (event.target.classList.contains('btn-interview')) {
 
         // access the card 
@@ -213,11 +217,15 @@ mainContainer.addEventListener('click', function (event) {
         }
 
 
-
+        UpdateAllJobs(companyName, 'Interview');
         calculateCount()
 
 
 
+
+
+
+        // if click rejected btn
     } else if (event.target.classList.contains('btn-rejected')) {
 
         // access the card 
@@ -271,7 +279,7 @@ mainContainer.addEventListener('click', function (event) {
 
         }
 
-
+        UpdateAllJobs(companyName, 'Rejected');
         calculateCount()
 
 
@@ -281,7 +289,6 @@ mainContainer.addEventListener('click', function (event) {
 
 
 })
-
 
 
 
@@ -425,7 +432,48 @@ function rejectedEmpty() {
 }
 
 
+// updating toggling time status 
+function UpdateAllJobs(companyName, status) {
+
+    // 
+    const jobCards = jobAllCard.querySelectorAll('.job-card');
+
+    for (const jobCard of jobCards) {
+
+        // console.log(jobCard);
+        const jobName = jobCard.querySelector('.company-name').innerText;
+
+        // console.log(jobName);
+
+        if (jobName == companyName) {
+
+            console.log(jobName);
+
+            const currentStatus = jobCard.querySelector('.job-status');
+
+            currentStatus.classList.remove('text-success', 'border-success', 'bg-green-100',
+                'text-error', 'border-error', 'bg-red-100');
+            jobCard.classList.remove('border-success', 'border-error')
+
+            if (status == 'Interview') {
+
+                currentStatus.innerText = 'Interview';
+                currentStatus.classList.add('text-success', 'border-success', 'bg-green-100');
+                jobCard.classList.add('border-success', 'border-l-7')
 
 
+            } else if (status == 'Rejected') {
+
+                currentStatus.innerText = 'Rejected';
+                currentStatus.classList.add('text-error', 'border-error', 'bg-red-100');
+                jobCard.classList.add('border-error', 'border-l-7')
+            }
+
+
+        }
+
+
+    }
+}
 
 
