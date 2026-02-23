@@ -53,5 +53,30 @@ section.appendChild(div);
 <!-- -------------------------------------------------------------------------------------------------------------------------------------------------->
 
 3. What is Event Bubbling? And how does it work?
+
+answer:
+
+When a specific event called on an element  the event starts and on the element parent  and moves up to its parent  and this process Will continue . This it called event bubbling.
+
+
+<!-- -------------------------------------------------------------------------------------------------------------------------------------------------->
+
 4. What is Event Delegation in JavaScript? Why is it useful?
+
+answer:
+
+Add event on a parent and you can access the children and you do eventing. You do not need to write a separate function for each child. One function does the job. Even if new children are added, it works dynamically and you do not need to write a separate function.
+
+
+<!-- -------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
 5. What is the difference between preventDefault() and stopPropagation() methods?
+
+answer:
+
+preventDefault()
+when you call the preventDefault() function its  off default browser behavior .
+
+stopPropagation()
+when you call the stopPropagation() function its  off bubbling / capturing and stay on this event .

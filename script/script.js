@@ -156,7 +156,8 @@ mainContainer.addEventListener('click', function (event) {
 
             allJobCountSet();
         }
-        
+
+        UpdateAllJobs(companyName, 'NotApplied');
         calculateCount();
 
         return;
@@ -341,7 +342,7 @@ function renderInterview() {
 
 }
 
- 
+
 // create rejected card
 function renderRejected() {
 
@@ -468,6 +469,12 @@ function UpdateAllJobs(companyName, status) {
                 currentStatus.innerText = 'Rejected';
                 currentStatus.classList.add('text-error', 'border-error', 'bg-red-100');
                 jobCard.classList.add('border-error', 'border-l-7')
+
+            } else if (status == 'NotApplied') {
+
+                currentStatus.innerText = 'Not Applied';
+                currentStatus.classList.remove('text-success', 'border-success', 'bg-green-100', 'text-error', 'border-error', 'bg-red-100', 'font-semibold', 'border');
+                jobCard.classList.remove('border-success', 'border-error', 'border-l-7')
             }
 
 
