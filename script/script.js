@@ -397,7 +397,7 @@ function interviewEmpty() {
         const div = document.createElement('div');
         div.innerHTML = `
         
-            <div class="py-15 rounded-md shadow-sm flex flex-col justify-center items-center ">
+            <div class="py-15 rounded-md shadow-sm flex flex-col justify-center items-center text-center">
 
                     <div class : " w-100 h-100 ">
                         <img  src="./resources/jobs.png" alt="">
@@ -419,7 +419,7 @@ function rejectedEmpty() {
         const div = document.createElement('div');
         div.innerHTML = `
         
-            <div class="py-15 rounded-md shadow-sm flex flex-col justify-center items-center ">
+            <div class="py-15 rounded-md shadow-sm flex flex-col justify-center items-center text-center">
 
                     <div class : " w-100 h-100 ">
                         <img  src="./resources/jobs.png" alt="">
