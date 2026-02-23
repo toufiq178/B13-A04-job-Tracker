@@ -152,8 +152,11 @@ mainContainer.addEventListener('click', function (event) {
             rejectedEmpty()
         }
 
+        if (currentStatus == 'btn-filter-all' || currentStatus == 'all') {
+
+            allJobCountSet();
+        }
         
-        allJobCountSet();
         calculateCount();
 
         return;
